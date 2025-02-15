@@ -14,7 +14,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         {/* Parent Route */}
         <Route path="/*" element={<Dashboard />}>
-          {/* Child Routes */}
           <Route path="dummy" element={<Dummy />} />
           <Route path="fake" element={<Fake />} />
         </Route>
