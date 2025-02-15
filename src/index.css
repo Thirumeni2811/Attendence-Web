@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+    --breakpoint-xs-max: 576px;  /* Max width for xs (phones and smaller devices) */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --color-primary: #008000;
+}

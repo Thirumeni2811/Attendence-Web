@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         {/* Parent Route */}
-        <Route path="/dashboard/*" element={<Dashboard />}>
+        <Route path="/*" element={<Dashboard />}>
           {/* Child Routes */}
           <Route path="dummy" element={<Dummy />} />
           <Route path="fake" element={<Fake />} />
