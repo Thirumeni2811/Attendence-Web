@@ -127,7 +127,7 @@ export default function Dashboard() {
       navigation={NAVIGATION}
       theme={demoTheme}
       branding={{
-        logo: <img src={session.user.image} alt="Logo" />,
+        logo: <img src={session.user.image} loading="lazy" alt="Logo" />,
         title: <span style={{ color: '#008000', fontWeight: 'bold' }}>{session.user.name}</span>,
         homeUrl: '/department',
       }}

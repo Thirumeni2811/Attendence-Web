@@ -24,12 +24,12 @@ const CSSTextField = styled(TextField)(({ theme, mode }) => ({
     },
   },
   "& textarea": {
-    color: "#3D3D3D",
+    color: mode === "dark" ? "#808080" : "#3D3D3D", 
     fontWeight: 500,
     fontFamily: 'gotham',
   },
   "& input": {
-    color: "#3D3D3D",
+    color: mode === "dark" ? "#808080" : "#3D3D3D", 
     fontWeight: 500,
     fontFamily: 'gotham',
   },

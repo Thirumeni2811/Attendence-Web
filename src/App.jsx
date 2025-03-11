@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import Login from './pages/Login'
-import Homepage from './pages/Homepage'
-import Dashboard from './pages/Dashboard'
-import Department from './pages/Department'
-import Fake from './pages/Fake'
-import Designation from './pages/Designation'
 import { ThemeProvider } from './components/Theme/ThemeContext'
+import Loaders from './components/Loader/Loaders';
+
+//Lazy loading components
+const Login = lazy(() => import('./pages/Login'));
+const Homepage = lazy(() => import('./pages/Homepage'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Department = lazy(() => import('./pages/Department'));
+const Designation = lazy(() => import('./pages/Designation'));
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -16,16 +18,23 @@ function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<Login />} />
-          {/* Parent Route */}
-          <Route path="/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
-            <Route path="department" element={<Department />} />
-            <Route path="designation" element={<Designation />} />
-            <Route path="fake" element={<Fake />} />
-          </Route>
-        </Routes>
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center h-screen w-full">
+              <Loaders />
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login />} />
+            {/* Parent Route */}
+            <Route path="/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
+              <Route path="department" element={<Department />} />
+              <Route path="designation" element={<Designation />} />
+            </Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </ThemeProvider>
   )
