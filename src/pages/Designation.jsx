@@ -11,6 +11,8 @@ import Button from '../components/form/Button/Button';
 import { CONFIG, CREATE_DESIGNATION, DELETE_DESIGNATION, GET_DESIGNATION, UPDATE_DESIGNATION } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import DesignationTable from '../components/Table/DesignationTable';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 //table
 const columns = [
@@ -182,17 +184,17 @@ const Designation = () => {
 
     return (
         <>
-            <section className='grid gap-4'>
+            <section className='container'>
 
-                <form noValidate className=' border-1 border-border dark:border-borderDark bg-bgColorLight dark:bg-darkColorSec p-5 rounded-lg text-base font-gotham' onSubmit={addDesignation}>
+                    <form noValidate className='form-container' onSubmit={addDesignation}>
 
                     <Box
-                        className='grid md:grid-cols-2 gap-7'
+                        className='box-container2'
                     >
 
                         <div>
                             {errors.name && (
-                                <span className='text-red-500 text-sm mb-2 block'>{errors.name}</span>
+                                <span className='error'>{errors.name}</span>
                             )}
                             <TextInput
                                 id="name"
@@ -206,7 +208,7 @@ const Designation = () => {
 
                         <div>
                             {errors.description && (
-                                <span className='text-red-500 text-sm mb-2 block'>{errors.description}</span>
+                                <span className='error'>{errors.description}</span>
                             )}
                             <TextInput
                                 id="description"
@@ -220,18 +222,18 @@ const Designation = () => {
 
                     </Box>
 
-                    <div className='pt-4 flex justify-end'>
+                    <div className='buttonField'>
                         <Button name={isEditing ? 'Update Designation' : 'Add Designation'} />
                     </div>
 
                 </form>
 
-                <div className='grid gap-2 p-4 border-1 border-border rounded-lg bg-bgColorLight dark:bg-darkColorSec dark:border-borderDark'>
-                    <div className="flex gap-4 m-2">
+                <div className='tableContainer'>
+                    <div className="tableContainerRow">
 
                         {/* <StyledFormControl sx={{ minWidth: 120 }}>
                             <InputLabel>Role</InputLabel>
-                            <Select value={roleFilter} onChange={handleRoleFilterChange} label="Role">
+                            <Selectvalue={roleFilter} onChange={handleRoleFilterChange} label="Role">
                                 <MenuItem value="">All</MenuItem>
                                 <MenuItem value="Resident">Resident</MenuItem>
                                 <MenuItem value="Consultant">Consultant</MenuItem>
@@ -258,12 +260,12 @@ const Designation = () => {
 
             <ModalView open={openModal} onClose={handleCloseModal} user={selectedRow}>
                 {selectedRow && (
-                    <div className='grid gap-2'>
+                    <div className='modelContainer'>
                         <h1>Are you sure you want to delete the designation?</h1>
-                        <h1>Designation Name : <span className='text-primary font-bold'>{selectedRow.name || ""}</span></h1>
-                        <div className='flex justify-evenly mt-3'>
-                            <h1 className='border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary' onClick={() => handleDelete(selectedRow.id)}>Yes</h1>
-                            <h1 className='border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary' onClick={() => handleCloseModal()}>No</h1>
+                        <h1>Designation Name : <span className='modelName'>{selectedRow.name || ""}</span></h1>
+                        <div className='modelButton'>
+                            <h1 className='modelFields' onClick={() => handleDelete(selectedRow.id)}>Yes</h1>
+                            <h1 className='modelFields' onClick={() => handleCloseModal()}>No</h1>
                         </div>
                     </div>
                 )}

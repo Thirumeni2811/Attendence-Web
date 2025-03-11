@@ -17,3 +17,51 @@
     --color-textDark: #808080;
     --color-bgColorLight: #F5F5F5;
 }
+
+.container {
+    @apply grid gap-4;
+}
+
+.form-container {
+    @apply border border-border dark:border-borderDark bg-bgColorLight dark:bg-darkColorSec p-5 rounded-lg text-base;
+}
+
+.box-container2 {
+    @apply grid grid-cols-2 gap-7; 
+}
+
+.error {
+    @apply text-red-500 text-sm mb-2 block; 
+}
+
+.buttonField {
+    @apply pt-4 flex justify-end; 
+}
+
+.tableContainer {
+    @apply grid gap-2 p-4 border-1 border-border rounded-lg bg-bgColorLight dark:bg-darkColorSec dark:border-borderDark; 
+}
+
+.tableContainerRow {
+    @apply flex gap-4 m-2; 
+}
+
+.modelContainer {
+    @apply grid gap-2; 
+}
+
+.modelFields {
+    @apply border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary; 
+}
+
+.modelButton {
+    @apply flex justify-evenly mt-3; 
+}
+
+.modelName {
+    @apply text-primary font-bold; 
+}
+
+
+
+

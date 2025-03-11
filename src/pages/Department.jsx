@@ -182,17 +182,17 @@ const Department = () => {
 
     return (
         <>
-            <section className='grid gap-4'>
+            <section className='container'>
 
-                <form noValidate className=' border-1 border-border bg-white p-5 rounded-lg text-base font-gotham' onSubmit={addDepartment}>
+                <form noValidate className='form-container ' onSubmit={addDepartment}>
 
                     <Box
-                        className='grid md:grid-cols-2 gap-7'
+                        className='box-container2'
                     >
 
                         <div>
                             {errors.name && (
-                                <span className='text-red-500 text-sm mb-2 block'>{errors.name}</span>
+                                <span className='error'>{errors.name}</span>
                             )}
                             <TextInput
                                 id="name"
@@ -206,7 +206,7 @@ const Department = () => {
 
                         <div>
                             {errors.description && (
-                                <span className='text-red-500 text-sm mb-2 block'>{errors.description}</span>
+                                <span className='error'>{errors.description}</span>
                             )}
                             <TextInput
                                 id="description"
@@ -220,15 +220,15 @@ const Department = () => {
 
                     </Box>
 
-                    <div className='pt-4 flex justify-end'>
+                    <div className='buttonField'>
                         <Button name={isEditing ? 'Update Department' : 'Add Department'} />
 
                     </div>
 
                 </form>
 
-                <div className='grid gap-2 p-4 border-1 border-border rounded-lg bg-white'>
-                    <div className="flex gap-4 m-2">
+                <div className='tableContainer'>
+                    <div className='tableContainerRow'>
 
                         {/* <StyledFormControl sx={{ minWidth: 120 }}>
                             <InputLabel>Role</InputLabel>
@@ -259,12 +259,12 @@ const Department = () => {
 
             <ModalView open={openModal} onClose={handleCloseModal} user={selectedRow}>
                 {selectedRow && (
-                    <div className='grid gap-2'>
+                    <div className='modelContainer'>
                         <h1>Are you sure you want to delete the department?</h1>
-                        <h1>Department Name : <span className='text-primary font-bold'>{selectedRow.name || ""}</span></h1>
-                        <div className='flex justify-evenly mt-3'>
-                            <h1 className='border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary' onClick={() => handleDelete(selectedRow.id)}>Yes</h1>
-                            <h1 className='border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary' onClick={() => handleCloseModal()}>No</h1>
+                        <h1>Department Name : <span className='modelName'>{selectedRow.name || ""}</span></h1>
+                        <div className='modelButton'>
+                            <h1 className='modelFields' onClick={() => handleDelete(selectedRow.id)}>Yes</h1>
+                            <h1 className='modelFields' onClick={() => handleCloseModal()}>No</h1>
                         </div>
                     </div>
                 )}
