@@ -1,0 +1,12 @@
+.scrollbar::-webkit-scrollbar {
+    height: 0.4rem; 
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #008000; 
+  }
+  
+  .scrollbar::-webkit-scrollbar {
+    width: 0.4rem; 
+  }
+  
