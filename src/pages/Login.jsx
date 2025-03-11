@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import TextInput from '../components/form/TextInput';
+import TextInput1 from '../components/form/TextInput1';
 import { useNavigate } from "react-router-dom";
 // import Logo from "../assets/images/Logo.svg"
 import axios from "axios";
@@ -172,7 +172,7 @@ const Login = () => {
                                 >
                                     <div>
                                         <Error error={errors.email} />
-                                        <TextInput
+                                        <TextInput1
                                             id="email"
                                             name="email"
                                             label="Email"
@@ -183,7 +183,7 @@ const Login = () => {
                                     </div>
                                     <div>
                                         <Error error={errors.password} />
-                                        <TextInput
+                                        <TextInput1
                                             id="password"
                                             name="password"
                                             label="Password"
