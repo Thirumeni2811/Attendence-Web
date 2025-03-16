@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { extendTheme } from '@mui/material/styles';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LayersIcon from '@mui/icons-material/Layers';
+import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { PageContainer } from '@toolpad/core/PageContainer';
@@ -15,9 +16,9 @@ import Mode from '../components/Theme/Mode'
 
 const NAVIGATION = [
   { kind: 'header', title: 'Main items' },
-  { segment: 'department', title: 'Department', icon: <DashboardIcon /> },
-  { segment: 'designation', title: 'Designation', icon: <DashboardIcon /> },
-  { segment: 'fake', title: 'Orders', icon: <ShoppingCartIcon /> },
+  { segment: 'department', title: 'Department', icon: <CorporateFareIcon /> },
+  { segment: 'designation', title: 'Designation', icon: <BadgeOutlinedIcon /> },
+  { segment: 'schedule', title: 'Schedule', icon: <EventOutlinedIcon /> },
   { kind: 'divider' },
   { kind: 'header', title: 'Analytics' },
   {

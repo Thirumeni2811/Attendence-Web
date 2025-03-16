@@ -1,26 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import TextInput from '../components/form/TextInput';
-import SelectInput from '../components/form/SelectInput';
 import { Box } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import "../components/Scrollbar/Srollbar.css"
-import StyledFormControl from '../components/form/StyledFormControl';
 import ModalView from '../components/Modal/ModalView';
 import axios from 'axios';
 import Button from '../components/form/Button/Button';
 import { CONFIG, CREATE_DESIGNATION, DELETE_DESIGNATION, GET_DESIGNATION, UPDATE_DESIGNATION } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import DesignationTable from '../components/Table/DesignationTable';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-
-//table
-const columns = [
-    { id: 'sno', label: 'S.No', minWidth: 50 },
-    { id: 'name', label: 'Designation Name', minWidth: 170 },
-    { id: 'description', label: 'Designation Description', minWidth: 170 },
-    { id: 'action', label: 'Action', minWidth: 170 },
-];
+import Error from '../components/form/Button/Error'
 
 const Designation = () => {
     //field
@@ -49,7 +36,6 @@ const Designation = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [roleFilter, setRoleFilter] = useState('');
-    // const [specializationFilter, setSpecializationFilter] = useState('');
 
     //field
     const handleChange = (fieldName) => (e) => {
@@ -138,11 +124,10 @@ const Designation = () => {
                 console.error('Error in saving designations data:', error.response ? error.response.data : error.message);
                 alert('Failed to save designations data.');
             } finally {
-                setLoading(false); 
+                setLoading(false);
             }
         }
     };
-
 
     const handleEdit = (designation) => {
         // console.log(`Edit clicked for ${designation.id}`);
@@ -178,7 +163,7 @@ const Designation = () => {
         } catch (error) {
             console.error('Error deleting designation:', error.response ? error.response.data : error.message);
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
@@ -186,16 +171,14 @@ const Designation = () => {
         <>
             <section className='container'>
 
-                    <form noValidate className='form-container' onSubmit={addDesignation}>
+                <form noValidate className='form-container' onSubmit={addDesignation}>
 
                     <Box
                         className='box-container2'
                     >
 
                         <div>
-                            {errors.name && (
-                                <span className='error'>{errors.name}</span>
-                            )}
+                            <Error error={errors.name} />
                             <TextInput
                                 id="name"
                                 name="name"
@@ -207,15 +190,14 @@ const Designation = () => {
                         </div>
 
                         <div>
-                            {errors.description && (
-                                <span className='error'>{errors.description}</span>
-                            )}
+                            <Error error={errors.description} />
                             <TextInput
                                 id="description"
                                 name="description"
                                 label="Designation Description"
                                 value={formData.description || ''}
                                 onChange={handleChange('description')}
+                                multiline
                                 required
                             />
                         </div>
@@ -247,7 +229,6 @@ const Designation = () => {
                             <Loaders />
                         ) : (
                             <DesignationTable
-                                columns={columns}
                                 designations={designations}
                                 handleEdit={handleEdit}
                                 handleModal={handleModal}

@@ -3,7 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --breakpoint-xs-max: 576px;  /* Max width for xs (phones and smaller devices) */
+    --breakpoint-xs-max: 576px;
+    /* Max width for xs (phones and smaller devices) */
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 1024px;
@@ -18,6 +19,18 @@
     --color-bgColorLight: #F5F5F5;
 }
 
+.scrollbar::-webkit-scrollbar {
+    height: 0.4rem;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #008000;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
 .container {
     @apply grid gap-4;
 }
@@ -27,41 +40,37 @@
 }
 
 .box-container2 {
-    @apply grid grid-cols-2 gap-7; 
+    @apply grid md:grid-cols-2 gap-7;
 }
 
-.error {
-    @apply text-red-500 text-sm mb-2 block; 
+.box-container3 {
+    @apply grid md:grid-cols-3 gap-7;
 }
 
 .buttonField {
-    @apply pt-4 flex justify-end; 
+    @apply pt-4 flex justify-end;
 }
 
 .tableContainer {
-    @apply grid gap-2 p-4 border-1 border-border rounded-lg bg-bgColorLight dark:bg-darkColorSec dark:border-borderDark; 
+    @apply grid gap-2 p-4 border-1 border-border rounded-lg bg-bgColorLight dark:bg-darkColorSec dark:border-borderDark;
 }
 
 .tableContainerRow {
-    @apply flex gap-4 m-2; 
+    @apply flex gap-4 m-2;
 }
 
-.modelContainer {
-    @apply grid gap-2; 
+.model {
+    @apply grid gap-2;
 }
 
 .modelFields {
-    @apply border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary; 
+    @apply border px-4 p-1 rounded-lg cursor-pointer hover:border-2 hover:border-primary;
 }
 
 .modelButton {
-    @apply flex justify-evenly mt-3; 
+    @apply flex justify-evenly mt-3;
 }
 
 .modelName {
-    @apply text-primary font-bold; 
+    @apply text-primary font-bold;
 }
-
-
-
-

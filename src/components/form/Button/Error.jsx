@@ -4,7 +4,7 @@ const Error = ({ error }) => {
     if (!error) return null;
     return (
         <>
-            <span className="text-red-500 text-sm block">
+            <span className="text-red-500 text-sm mb-2 block">
                 {error}
             </span>
         </>

@@ -34,3 +34,15 @@ export const GET_DESIGNATION = `${BASE_URL}/designation`
 export const CREATE_DESIGNATION = `${BASE_URL}/designation`
 export const UPDATE_DESIGNATION = (destId) => `${BASE_URL}/designation/${destId}`
 export const DELETE_DESIGNATION = (destId) => `${BASE_URL}/designation/${destId}`
+
+//Schedule
+export const GET_SCHEDULE = `${BASE_URL}/schedule`
+export const CREATE_SCHEDULE = `${BASE_URL}/schedule`
+export const GET_SCHEDULE_BY_ID = (scheduleId) => `${BASE_URL}/schedule/${scheduleId}`
+export const UPDATE_SCHEDULE = (scheduleId) => `${BASE_URL}/schedule/${scheduleId}`
+export const DELETE_SCHEDULE = (scheduleId) => `${BASE_URL}/schedule/${scheduleId}`
+
+//Break
+export const CREATE_BREAK = (scheduleId) => `${BASE_URL}/schedule/${scheduleId}/breaks`
+export const UPDATE_BREAK = (scheduleId, breakId) => `${BASE_URL}/schedule/${scheduleId}/breaks/${breakId}`
+export const DELETE_BREAK = (scheduleId, breakId) => `${BASE_URL}/schedule/${scheduleId}/breaks/${breakId}`

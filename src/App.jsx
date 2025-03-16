@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './components/Theme/ThemeContext'
 import Loaders from './components/Loader/Loaders';
+import Breaks from './pages/Breaks';
 
 //Lazy loading components
 const Login = lazy(() => import('./pages/Login'));
@@ -9,6 +10,7 @@ const Homepage = lazy(() => import('./pages/Homepage'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Department = lazy(() => import('./pages/Department'));
 const Designation = lazy(() => import('./pages/Designation'));
+const Schedule = lazy(() => import('./pages/Schedule'));
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -32,6 +34,8 @@ function App() {
             <Route path="/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
               <Route path="department" element={<Department />} />
               <Route path="designation" element={<Designation />} />
+              <Route path="schedule" element={<Schedule />} />
+              <Route path="schedule-breaks/:id" element={<Breaks />} />
             </Route>
           </Routes>
         </Suspense>

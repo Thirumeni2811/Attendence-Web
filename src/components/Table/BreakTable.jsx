@@ -4,16 +4,41 @@ import StyledTableCell from "../form/StyledTableCell";
 import Edit from "../form/Button/Edit";
 import Delete from "../form/Button/Delete";
 import { useTheme } from "../Theme/ThemeContext";
+import dayjs from "dayjs";
+import "dayjs/locale/en-gb";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+//format time
+const formatTimeToUTC = (time) => {
+    return dayjs.utc(time).toISOString(); // Converts to UTC and formats as ISO 8601
+};
+
+//format date
+const formatDate = (date) => {
+    return dayjs(date).format("DD-MM-YYYY"); // Format date in dd-mm-yyyy
+};
+
+// format time for table
+const formatTimeToIST = (time) => {
+    const utcTime = formatTimeToUTC(time); // Get UTC time
+    return dayjs(utcTime).tz("Asia/Kolkata").format("hh:mm A"); // Convert to IST and format as hh:mm AM/PM
+};
 
 //table
 const columns = [
     { id: 'sno', label: 'S.No', minWidth: 50 },
-    { id: 'name', label: 'Designation Name', minWidth: 170 },
-    { id: 'description', label: 'Designation Description', minWidth: 170 },
+    { id: 'breakType', label: 'Break Type', minWidth: 170 },
+    { id: 'period', label: 'Period (in Mins)', minWidth: 170 },
+    { id: 'startTime', label: 'Schedule - Start Time', minWidth: 170 },
+    { id: 'endTime', label: 'Schedule - End Time', minWidth: 170 },
     { id: 'action', label: 'Action', minWidth: 170 },
 ];
 
-const DesignationTable = ({ designations, handleEdit, handleModal }) => {
+const BreakTable = ({ breaks, handleEdit, handleModal }) => {
 
     const { mode } = useTheme();
 
@@ -29,7 +54,7 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
         setPage(0);
     };
 
-    const paginatedDesignations = designations?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+    const paginatedBreaks = breaks?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
     const startingIndex = page * rowsPerPage
 
     return (
@@ -61,21 +86,27 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {Array.isArray(designations) && designations.length > 0 ? (
-                            paginatedDesignations.map((designation, index) => (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={designation.id}>
+                        {Array.isArray(breaks) && breaks.length > 0 ? (
+                            paginatedBreaks.map((item, index) => (
+                                <TableRow hover role="checkbox" tabIndex={-1} key={item._id}>
                                     <StyledTableCell>{startingIndex + index + 1}</StyledTableCell>
-                                    <StyledTableCell>{designation?.name || ""}</StyledTableCell>
-                                    <StyledTableCell>{designation?.description || "-"}</StyledTableCell>
+                                    <StyledTableCell>{item?.breakType || "-"}</StyledTableCell>
+                                    <StyledTableCell>{item?.period || "-"}</StyledTableCell>
                                     <StyledTableCell>
-                                        <Edit onClick={() => handleEdit(designation)} />
-                                        <Delete onClick={() => handleModal(designation)} />
+                                        {formatTimeToIST(item?.startTime) || ""}
+                                    </StyledTableCell>
+                                    <StyledTableCell>
+                                        {formatTimeToIST(item?.endTime) || ""}
+                                    </StyledTableCell>
+                                    <StyledTableCell>
+                                        <Edit onClick={() => handleEdit(item)} />
+                                        <Delete onClick={() => handleModal(item)} />
                                     </StyledTableCell>
                                 </TableRow>
                             ))
                         ) : (
                             <TableRow>
-                                <StyledTableCell colSpan={4}>No Designation available</StyledTableCell>
+                                <StyledTableCell colSpan={6}>No Break available</StyledTableCell>
                             </TableRow>
                         )}
                     </TableBody>
@@ -85,7 +116,7 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
             <TablePagination
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
-                count={designations?.length || 0}
+                count={breaks?.length || 0}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
@@ -95,4 +126,4 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
     );
 };
 
-export default DesignationTable;
+export default BreakTable;

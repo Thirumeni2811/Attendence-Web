@@ -6,7 +6,7 @@ import { useTheme } from '../Theme/ThemeContext';
 const CSSTextField = styled(TextField)(({ theme, mode }) => ({
   "& .MuiOutlinedInput-root": {
     borderRadius: "0.75rem",
-    backgroundColor: mode === "dark" ? "#151513": "#FAFAFA" ,
+    backgroundColor: mode === "dark" ? "#151513" : "#FAFAFA",
     "&:hover .MuiOutlinedInput-notchedOutline": {
       borderColor: "#008000",
     },
@@ -24,18 +24,19 @@ const CSSTextField = styled(TextField)(({ theme, mode }) => ({
     },
   },
   "& textarea": {
-    color: mode === "dark" ? "#808080" : "#3D3D3D", 
+    color: mode === "dark" ? "#808080" : "#3D3D3D",
     fontWeight: 500,
     fontFamily: 'gotham',
+    resize: "vertical", // Allows vertical resizing
   },
   "& input": {
-    color: mode === "dark" ? "#808080" : "#3D3D3D", 
+    color: mode === "dark" ? "#808080" : "#3D3D3D",
     fontWeight: 500,
     fontFamily: 'gotham',
   },
 }));
 
-const TextInput = ({ id, label, value, onChange, type = "text", multiline = false, rows = 1, required = false, disabled = false, readOnly = false, placeholder = '', InputLabelProps = {} }) => {
+const TextInput = ({ id, label, value, onChange, type = "text", multiline = false, required = false, disabled = false, readOnly = false, placeholder = '', InputLabelProps = {} }) => {
   const { mode } = useTheme();
   return (
     <CSSTextField
@@ -44,7 +45,8 @@ const TextInput = ({ id, label, value, onChange, type = "text", multiline = fals
       variant="outlined"
       type={type}
       multiline={multiline}
-      rows={rows}
+      minRows={multiline ? 1 : undefined} // Auto expands
+      maxRows={multiline ? 6 : undefined}
       className="w-full"
       value={value}
       onChange={onChange}

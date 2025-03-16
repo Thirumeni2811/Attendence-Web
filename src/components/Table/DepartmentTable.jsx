@@ -4,7 +4,15 @@ import StyledTableCell from "../form/StyledTableCell";
 import Edit from "../form/Button/Edit";
 import Delete from "../form/Button/Delete";
 
-const DepartmentTable = ({ columns, departments, handleEdit, handleModal }) => {
+//table
+const columns = [
+    { id: 'sno', label: 'S.No', minWidth: 50 },
+    { id: 'name', label: 'Department Name', minWidth: 170 },
+    { id: 'description', label: 'Department Description', minWidth: 170 },
+    { id: 'action', label: 'Action', minWidth: 170 },
+];
+
+const DepartmentTable = ({ departments, handleEdit, handleModal }) => {
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -23,9 +31,9 @@ const DepartmentTable = ({ columns, departments, handleEdit, handleModal }) => {
 
     return (
         <>
-            <TableContainer sx={{ maxHeight: "auto", overflowY: "auto" }} className="scrollbar">
+            <TableContainer className="scrollbar max-h-auto overflow-y-auto">
 
-                <Table stickyHeader aria-label="sticky table" style={{ border: "1px solid #c0c0c0" }}>
+                <Table stickyHeader aria-label="sticky table" className="border-1 border-border">
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
@@ -47,11 +55,11 @@ const DepartmentTable = ({ columns, departments, handleEdit, handleModal }) => {
                             paginatedDepartments.map((department, index) => (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={department.id}>
                                     <StyledTableCell>{startingIndex + index + 1}</StyledTableCell>
-                                    <StyledTableCell>{department.name}</StyledTableCell>
-                                    <StyledTableCell>{department.description || "-"}</StyledTableCell>
+                                    <StyledTableCell>{department?.name || ""}</StyledTableCell>
+                                    <StyledTableCell>{department?.description || "-"}</StyledTableCell>
                                     <StyledTableCell>
-                                        <Edit onClick={() => handleEdit(department)}/>
-                                        <Delete  onClick={() => handleModal(department)}/>
+                                        <Edit onClick={() => handleEdit(department)} />
+                                        <Delete onClick={() => handleModal(department)} />
                                     </StyledTableCell>
                                 </TableRow>
                             ))
