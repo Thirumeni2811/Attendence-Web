@@ -3,10 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CONFIG, CREATE_BREAK, DELETE_BREAK, GET_SCHEDULE_BY_ID, UPDATE_BREAK } from '../services';
 import Loaders from '../components/Loader/Loaders';
-import dayjs from "dayjs";
-import "dayjs/locale/en-gb";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import BreakTable from '../components/Table/BreakTable';
 import Button from '../components/form/Button/Button';
 import StyledTimeField from '../components/form/StyledTimeField';
@@ -15,25 +11,7 @@ import { Box } from '@mui/material'
 import TextInput from '../components/form/TextInput';
 import ModalView from '../components/Modal/ModalView';
 import SelectInput from '../components/form/SelectInput';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
-//format time
-const formatTimeToUTC = (time) => {
-    return dayjs.utc(time).toISOString(); // Converts to UTC and formats as ISO 8601
-};
-
-//format date
-const formatDate = (date) => {
-    return dayjs(date).format("DD-MM-YYYY"); // Format date in dd-mm-yyyy
-};
-
-// format time for table
-const formatTimeToIST = (time) => {
-    const utcTime = formatTimeToUTC(time); // Get UTC time
-    return dayjs(utcTime).tz("Asia/Kolkata").format("hh:mm A"); // Convert to IST and format as hh:mm AM/PM
-};
+import { formatTimeToIST } from '../utils/DateTime';
 
 const Breaks = () => {
     const { id } = useParams();

@@ -10,6 +10,7 @@ import HolidayTable from '../components/Table/HolidayTable'
 import Error from '../components/form/Button/Error'
 import StyledDateField from '../components/form/StyledDateField';
 import dayjs from 'dayjs';
+import { formatDate } from '../utils/DateTime';
 
 const Holiday = () => {
     //field
@@ -262,7 +263,7 @@ const Holiday = () => {
                 {selectedRow && (
                     <div className='modelContainer'>
                         <h1>Are you sure you want to delete the holiday?</h1>
-                        <h1>Holiday Date : <span className='modelName'>{selectedRow.date || ""}</span></h1>
+                        <h1>Holiday Date : <span className='modelName'>{formatDate(selectedRow.date) || ""}</span></h1>
                         <div className='modelButton'>
                             <h1 className='modelFields' onClick={() => handleDelete(selectedRow.id)}>Yes</h1>
                             <h1 className='modelFields' onClick={() => handleCloseModal()}>No</h1>

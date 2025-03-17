@@ -4,31 +4,9 @@ import StyledTableCell from "../form/StyledTableCell";
 import Edit from "../form/Button/Edit";
 import Delete from "../form/Button/Delete";
 import { useTheme } from "../Theme/ThemeContext";
-import dayjs from "dayjs";
-import "dayjs/locale/en-gb";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import TableViewOutlinedIcon from '@mui/icons-material/TableViewOutlined';
 import { Link } from "react-router-dom";
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
-//format time
-const formatTimeToUTC = (time) => {
-    return dayjs.utc(time).toISOString(); // Converts to UTC and formats as ISO 8601
-};
-
-//format date
-const formatDate = (date) => {
-    return dayjs(date).format("DD-MM-YYYY"); // Format date in dd-mm-yyyy
-};
-
-// format time for table
-const formatTimeToIST = (time) => {
-    const utcTime = formatTimeToUTC(time); // Get UTC time
-    return dayjs(utcTime).tz("Asia/Kolkata").format("hh:mm A"); // Convert to IST and format as hh:mm AM/PM
-};
+import { formatTimeToIST } from "../../utils/DateTime";
 
 //table
 const columns = [

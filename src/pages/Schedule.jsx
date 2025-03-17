@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Error from '../components/form/Button/Error'
 import TextInput from '../components/form/TextInput'
 import { Box } from '@mui/material'
-import dayjs from "dayjs";
-import "dayjs/locale/en-gb";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import StyledTimeField from '../components/form/StyledTimeField';
 import Button from '../components/form/Button/Button';
 import axios from 'axios';
@@ -13,25 +9,7 @@ import { CONFIG, CREATE_SCHEDULE, DELETE_SCHEDULE, GET_SCHEDULE, UPDATE_SCHEDULE
 import Loaders from '../components/Loader/Loaders';
 import ScheduleTable from '../components/Table/ScheduleTable';
 import ModalView from '../components/Modal/ModalView';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
-//format time
-const formatTimeToUTC = (time) => {
-  return dayjs.utc(time).toISOString(); // Converts to UTC and formats as ISO 8601
-};
-
-//format date
-const formatDate = (date) => {
-  return dayjs(date).format("DD-MM-YYYY"); // Format date in dd-mm-yyyy
-};
-
-// format time for table
-const formatTimeToIST = (time) => {
-  const utcTime = formatTimeToUTC(time); // Get UTC time
-  return dayjs(utcTime).tz("Asia/Kolkata").format("hh:mm A"); // Convert to IST and format as hh:mm AM/PM
-};
+import { formatTimeToUTC } from '../utils/DateTime';
 
 const Schedule = () => {
 
