@@ -19,6 +19,8 @@ const Login = () => {
         password: '',
     });
 
+    const [loading, setLoading] = useState(false)
+
     const [generalError, setGeneralError] = useState('')
     const navigate = useNavigate();
 
@@ -89,7 +91,7 @@ const Login = () => {
                 sessionStorage.setItem('accessTokenExpires', accessTokenExpires);
                 sessionStorage.setItem('refreshTokenExpires', refreshTokenExpires);
 
-                return accessToken; 
+                return accessToken;
             }
         } catch (error) {
             console.error("Error refreshing tokens:", error);
@@ -101,7 +103,7 @@ const Login = () => {
     // Login function
     const login = async (e) => {
         e.preventDefault();
-
+        setLoading(true)
         try {
             if (validateForm()) {
                 // console.log(formData)
@@ -143,6 +145,8 @@ const Login = () => {
         } catch (error) {
             console.error("An error occurred during login:", error);
             setGeneralError('Something went wrong. Please try again');
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -196,7 +200,7 @@ const Login = () => {
                                 </Box>
 
                                 <div className="flex items-center justify-center">
-                                    <Button1 name="Login" />
+                                    <Button1 name="Login" loading={loading} />
                                 </div>
                             </form>
 
