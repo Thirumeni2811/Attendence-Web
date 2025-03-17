@@ -7,6 +7,7 @@ import LayersIcon from '@mui/icons-material/Layers';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import BeachAccessOutlinedIcon from '@mui/icons-material/BeachAccessOutlined';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { PageContainer } from '@toolpad/core/PageContainer';
@@ -19,6 +20,7 @@ const NAVIGATION = [
   { segment: 'department', title: 'Department', icon: <CorporateFareIcon /> },
   { segment: 'designation', title: 'Designation', icon: <BadgeOutlinedIcon /> },
   { segment: 'schedule', title: 'Schedule', icon: <EventOutlinedIcon /> },
+  { segment: 'holiday', title: 'Holiday', icon: <BeachAccessOutlinedIcon /> },
   { kind: 'divider' },
   { kind: 'header', title: 'Analytics' },
   {

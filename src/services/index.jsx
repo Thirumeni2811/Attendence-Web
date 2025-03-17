@@ -1,4 +1,5 @@
-const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
+// const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
+const BASE_URL = "http://localhost:3006/v1"
 
 //Default config
 const token = sessionStorage.getItem('token');
@@ -46,3 +47,9 @@ export const DELETE_SCHEDULE = (scheduleId) => `${BASE_URL}/schedule/${scheduleI
 export const CREATE_BREAK = (scheduleId) => `${BASE_URL}/schedule/${scheduleId}/breaks`
 export const UPDATE_BREAK = (scheduleId, breakId) => `${BASE_URL}/schedule/${scheduleId}/breaks/${breakId}`
 export const DELETE_BREAK = (scheduleId, breakId) => `${BASE_URL}/schedule/${scheduleId}/breaks/${breakId}`
+
+//Holiday
+export const GET_HOLIDAY = `${BASE_URL}/holiday`
+export const CREATE_HOLIDAY = `${BASE_URL}/holiday`
+export const UPDATE_HOLIDAY = (holidayId) => `${BASE_URL}/holiday/${holidayId}`
+export const DELETE_HOLIDAY = (holidayId) => `${BASE_URL}/holiday/${holidayId}`
