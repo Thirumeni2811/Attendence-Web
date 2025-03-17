@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TableContainer, Table, TableHead, TableBody, TableRow, TablePagination } from "@mui/material";
-import StyledTableCell from "../form/StyledTableCell";
+import StyledTableCell from "../form/Fields/StyledTableCell";
 import Edit from "../form/Button/Edit";
 import Delete from "../form/Button/Delete";
 

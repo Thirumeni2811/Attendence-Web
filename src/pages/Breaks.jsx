@@ -5,12 +5,12 @@ import { CONFIG, CREATE_BREAK, DELETE_BREAK, GET_SCHEDULE_BY_ID, UPDATE_BREAK } 
 import Loaders from '../components/Loader/Loaders';
 import BreakTable from '../components/Table/BreakTable';
 import Button from '../components/form/Button/Button';
-import StyledTimeField from '../components/form/StyledTimeField';
+import StyledTimeField from '../components/form/Fields/StyledTimeField';
 import Error from '../components/form/Button/Error';
 import { Box } from '@mui/material'
-import TextInput from '../components/form/TextInput';
+import TextInput from '../components/form/Fields/TextInput';
 import ModalView from '../components/Modal/ModalView';
-import SelectInput from '../components/form/SelectInput';
+import SelectInput from '../components/form/Fields/SelectInput';
 import { formatTimeToIST } from '../utils/DateTime';
 
 const Breaks = () => {

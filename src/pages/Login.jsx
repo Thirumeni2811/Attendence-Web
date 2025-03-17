@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import TextInput1 from '../components/form/TextInput1';
+import TextInput1 from '../components/form/Fields/TextInput1';
 import { useNavigate } from "react-router-dom";
 // import Logo from "../assets/images/Logo.svg"
 import axios from "axios";

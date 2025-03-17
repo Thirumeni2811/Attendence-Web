@@ -7,8 +7,8 @@ import dayjs from "dayjs";
 import "dayjs/locale/en-gb";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import FieldTheme from "../Theme/FieldTheme";
-import { useTheme } from "../Theme/ThemeContext";
+import FieldTheme from "../../Theme/FieldTheme";
+import { useTheme } from "../../Theme/ThemeContext";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);

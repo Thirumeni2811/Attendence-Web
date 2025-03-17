@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import TextInput from '../components/form/TextInput';
+import TextInput from '../components/form/Fields/TextInput';
 import { Box } from '@mui/material';
 import ModalView from '../components/Modal/ModalView';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import { CONFIG, CREATE_HOLIDAY, DELETE_HOLIDAY, GET_HOLIDAY, UPDATE_HOLIDAY } f
 import Loaders from '../components/Loader/Loaders';
 import HolidayTable from '../components/Table/HolidayTable'
 import Error from '../components/form/Button/Error'
-import StyledDateField from '../components/form/StyledDateField';
+import StyledDateField from '../components/form/Fields/StyledDateField';
 import dayjs from 'dayjs';
 import { formatDate } from '../utils/DateTime';
 
@@ -224,7 +224,7 @@ const Holiday = () => {
                     </Box>
 
                     <div className='buttonField'>
-                        <Button name={isEditing ? 'Update Holiday' : 'Add holiday'} />
+                        <Button name={isEditing ? 'Update Holiday' : 'Add Holiday'} />
 
                     </div>
 

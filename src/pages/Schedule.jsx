@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Error from '../components/form/Button/Error'
-import TextInput from '../components/form/TextInput'
+import TextInput from '../components/form/Fields/TextInput'
 import { Box } from '@mui/material'
-import StyledTimeField from '../components/form/StyledTimeField';
+import StyledTimeField from '../components/form/Fields/StyledTimeField';
 import Button from '../components/form/Button/Button';
 import axios from 'axios';
 import { CONFIG, CREATE_SCHEDULE, DELETE_SCHEDULE, GET_SCHEDULE, UPDATE_SCHEDULE } from '../services';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import TextInput from '../components/form/TextInput';
+import TextInput from '../components/form/Fields/TextInput';
 import { Box } from '@mui/material';
 import ModalView from '../components/Modal/ModalView';
 import axios from 'axios';
