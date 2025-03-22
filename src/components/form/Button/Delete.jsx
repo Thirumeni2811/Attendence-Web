@@ -1,11 +1,11 @@
 import React from 'react'
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 
 const Delete = ({ onClick }) => {
   return (
     <>
         <button onClick={onClick} className='cursor-pointer'>
-            <DeleteOutlinedIcon />
+            <DeleteRoundedIcon />
         </button>
     </>
   )

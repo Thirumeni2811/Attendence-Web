@@ -3,6 +3,8 @@ import { TableContainer, Table, TableHead, TableBody, TableRow, TablePagination 
 import StyledTableCell from "../form/Fields/StyledTableCell";
 import Edit from "../form/Button/Edit";
 import Delete from "../form/Button/Delete";
+import StyledTableHead from "../form/Fields/StyledTableHead";
+import { useTheme } from "../Theme/ThemeContext";
 
 //table
 const columns = [
@@ -13,6 +15,8 @@ const columns = [
 ];
 
 const DepartmentTable = ({ departments, handleEdit, handleModal }) => {
+
+    const { mode } = useTheme();
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -33,11 +37,17 @@ const DepartmentTable = ({ departments, handleEdit, handleModal }) => {
         <>
             <TableContainer className="scrollbar max-h-auto overflow-y-auto">
 
-                <Table stickyHeader aria-label="sticky table" className="border-1 border-border">
+                <Table
+                    stickyHeader
+                    aria-label="sticky table"
+                    style={{
+                        border: `1px solid ${mode === "dark" ? "#8888883B" : "#c0c0c0"}`,
+                    }}
+                >
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
-                                <StyledTableCell
+                                <StyledTableHead
                                     key={column.id}
                                     style={{
                                         minWidth: column.minWidth,
@@ -46,7 +56,7 @@ const DepartmentTable = ({ departments, handleEdit, handleModal }) => {
                                     }}
                                 >
                                     {column.label}
-                                </StyledTableCell>
+                                </StyledTableHead>
                             ))}
                         </TableRow>
                     </TableHead>
@@ -80,6 +90,18 @@ const DepartmentTable = ({ departments, handleEdit, handleModal }) => {
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
+                sx={{
+                    color: mode === "dark" ? "#808080" : "black", 
+                    "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                    "& .MuiSelect-icon": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                    "& .MuiSvgIcon-root": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                }}
             />
         </>
     );

@@ -14,7 +14,7 @@ const StyledFormControl = styled(FormControl)(({ theme }) => ({
     },
     "& .MuiInputLabel-root": {
         color: "gray",
-        fontFamily: 'gotham', 
+        fontFamily: 'Albert Sans', 
         fontWeight: '500',
         fontSize: '1rem',
         "&.Mui-focused": {
@@ -24,7 +24,7 @@ const StyledFormControl = styled(FormControl)(({ theme }) => ({
     },
 
     "& .MuiSelect-select": {
-        fontFamily: 'gotham',
+        fontFamily: 'Albert Sans',
         fontSize: '1rem',
         color: "#3D3D3D",
         fontWeight: 500,

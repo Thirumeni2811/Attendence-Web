@@ -1,11 +1,11 @@
 import React from 'react'
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 const Edit = ({ onClick }) => {
   return (
     <>
         <button onClick={onClick} className='cursor-pointer'>
-            <EditOutlinedIcon />
+            <EditRoundedIcon />
         </button>
     </>
   )

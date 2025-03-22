@@ -6,7 +6,8 @@ import { useTheme } from '../../Theme/ThemeContext';
 const CSSTextField = styled(TextField)(({ theme, mode }) => ({
   "& .MuiOutlinedInput-root": {
     borderRadius: "0.75rem",
-    backgroundColor: mode === "dark" ? "#151513" : "#FAFAFA",
+    backgroundColor: mode === "dark" ? "black" : "#FAFAFA",
+    ...(mode === "dark" && { border: "1px solid #323232" }),
     "&:hover .MuiOutlinedInput-notchedOutline": {
       borderColor: "#008000",
     },
@@ -16,7 +17,7 @@ const CSSTextField = styled(TextField)(({ theme, mode }) => ({
   },
   "& .MuiInputLabel-root": {
     color: "gray",
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
     fontSize: '1rem',
     "&.Mui-focused": {
       color: "#008000",
@@ -26,13 +27,13 @@ const CSSTextField = styled(TextField)(({ theme, mode }) => ({
   "& textarea": {
     color: mode === "dark" ? "#808080" : "#3D3D3D",
     fontWeight: 500,
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
     resize: "vertical", // Allows vertical resizing
   },
   "& input": {
     color: mode === "dark" ? "#808080" : "#3D3D3D",
     fontWeight: 500,
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
   },
 }));
 

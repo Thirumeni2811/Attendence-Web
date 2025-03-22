@@ -218,9 +218,9 @@ const Breaks = () => {
 
     return (
         <>
-            <section className='container'>
+            <section className='wholeContainer'>
                 {Object.keys(data).length > 0 && (
-                    <div className='form-container'>
+                    <div className='form-container dark:text-textDark'>
                         <p className='text-3xl font-extrabold'>
                             {data?.name || ""} | {"  "}
                             <span className='text-sm'>{formatTimeToIST(data?.workingHours?.startTime) || "-"}</span> {" "}

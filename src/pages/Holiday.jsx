@@ -189,7 +189,7 @@ const Holiday = () => {
 
     return (
         <>
-            <section className='container'>
+            <section className='wholeContainer'>
 
                 <form noValidate className='form-container ' onSubmit={addHoliday}>
 

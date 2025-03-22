@@ -7,6 +7,7 @@ import { useTheme } from "../Theme/ThemeContext";
 import TableViewOutlinedIcon from '@mui/icons-material/TableViewOutlined';
 import { Link } from "react-router-dom";
 import { formatTimeToIST } from "../../utils/DateTime";
+import StyledTableHead from "../form/Fields/StyledTableHead";
 
 //table
 const columns = [
@@ -52,20 +53,20 @@ const ScheduleTable = ({ schedules, handleEdit, handleModal }) => {
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
-                                <StyledTableCell
+                                <StyledTableHead
                                     key={column.id}
-                                    style={{
+                                    sx={{
                                         minWidth: column.minWidth,
                                         fontWeight: "700",
                                         fontSize: "1rem",
-
                                     }}
                                 >
                                     {column.label}
-                                </StyledTableCell>
+                                </StyledTableHead>
                             ))}
                         </TableRow>
                     </TableHead>
+
                     <TableBody>
                         {Array.isArray(schedules) && schedules.length > 0 ? (
                             paginatedSchedules.map((schedule, index) => (
@@ -112,6 +113,18 @@ const ScheduleTable = ({ schedules, handleEdit, handleModal }) => {
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
+                sx={{
+                    color: mode === "dark" ? "#808080" : "black", 
+                    "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                    "& .MuiSelect-icon": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                    "& .MuiSvgIcon-root": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                }}
             />
         </>
     );

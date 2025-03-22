@@ -4,6 +4,7 @@ import StyledTableCell from "../form/Fields/StyledTableCell";
 import Edit from "../form/Button/Edit";
 import Delete from "../form/Button/Delete";
 import { useTheme } from "../Theme/ThemeContext";
+import StyledTableHead from "../form/Fields/StyledTableHead";
 
 //table
 const columns = [
@@ -46,7 +47,7 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
-                                <StyledTableCell
+                                <StyledTableHead
                                     key={column.id}
                                     style={{
                                         minWidth: column.minWidth,
@@ -56,7 +57,7 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
                                     }}
                                 >
                                     {column.label}
-                                </StyledTableCell>
+                                </StyledTableHead>
                             ))}
                         </TableRow>
                     </TableHead>
@@ -90,6 +91,18 @@ const DesignationTable = ({ designations, handleEdit, handleModal }) => {
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
+                sx={{
+                    color: mode === "dark" ? "#808080" : "black", 
+                    "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                    "& .MuiSelect-icon": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                    "& .MuiSvgIcon-root": {
+                        color: mode === "dark" ? "#808080" : "black", 
+                    },
+                }}
             />
         </>
     );

@@ -16,7 +16,7 @@ const CSSTextField = styled(TextField)(({ theme }) => ({
   },
   "& .MuiInputLabel-root": {
     color: "gray",
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
     fontSize: '1rem',
     "&.Mui-focused": {
       color: "#008000",
@@ -26,12 +26,12 @@ const CSSTextField = styled(TextField)(({ theme }) => ({
   "& textarea": {
     color: "#3D3D3D",
     fontWeight: 500,
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
   },
   "& input": {
     color: "#3D3D3D",
     fontWeight: 500,
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
   },
 }));
 

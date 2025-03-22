@@ -154,7 +154,7 @@ const Login = () => {
 
     return (
         <>
-            <section className="font-gotham bg-secondary xs:px-2">
+            <section className="font-Albert Sans bg-secondary xs:px-2">
                 <div className="h-svh flex items-center justify-center">
                     <div className="flex flex-col justify-center items-center">
                         <div className="p-10 xs:p-4 xs:py-8 py-20 rounded-xl shadow-lg w-[22rem] sm:w-[28.4rem] bg-white flex flex-col gap-4">

@@ -9,7 +9,7 @@ const statusColors = {
 };
 
 const ThemedTableCell = styled(TableCell)(({ theme, status, mode }) => ({
-    fontFamily: 'gotham',
+    fontFamily: 'Albert Sans',
     fontWeight: 500,
     fontSize: '0.85rem',
     border: `1px solid ${mode === "dark" ? "#8888883B" : "#c0c0c0"}`,
