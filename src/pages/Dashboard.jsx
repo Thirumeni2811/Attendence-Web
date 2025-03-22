@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  AppBar, Box, CssBaseline, Drawer, IconButton, List, ListItem, ListItemButton,
-  ListItemIcon, ListItemText, Toolbar, MenuItem, Avatar, Menu, Typography, Collapse
+  AppBar, Box, CssBaseline, Drawer, IconButton, Toolbar, MenuItem, Avatar, Menu, Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from "../assets/images/Logo.svg";
@@ -12,6 +11,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Mode from '../components/Theme/Mode'
 import Sidebar from '../constants/Sidebar';
 import { useTheme } from '../components/Theme/ThemeContext';
+import axios from 'axios';
+import { CONFIG, GET_ORGANISATION } from '../services';
 
 const theme = createTheme({
   breakpoints: {
@@ -32,6 +33,8 @@ function Dashboard(props) {
   const [openAccordionId, setOpenAccordionId] = useState(null);
   const [selected, setSelected] = useState("Department")
   const [selectedChildId, setSelectedChildId] = useState('');
+  const [data, setData] = useState({});
+  console.log(data)
 
   const [sidebarToggle, setSidebarToggle] = useState(true); // Initially true (Sidebar is visible)
 
@@ -95,12 +98,26 @@ function Dashboard(props) {
 
 
   const drawer = (
-    <Sidebar selected={selected} setSelected={setSelected} selectedChildId={selectedChildId} setSelectedChildId={setSelectedChildId} />
+    <Sidebar selected={selected} setSelected={setSelected} selectedChildId={selectedChildId} setSelectedChildId={setSelectedChildId} data={data}/>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   const { mode } = useTheme();
+
+  const getData = async () => {
+    try {
+      const response = await axios.get(GET_ORGANISATION, CONFIG);
+      const data = response?.data?.data
+      setData(data || {})
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -161,7 +178,7 @@ function Dashboard(props) {
               <Mode />
               <Box sx={{ flexGrow: 0 }}>
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Attendance" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt={data.name || "Attendance"} src={data.logo || "/static/images/avatar/2.jpg"} />
                 </IconButton>
                 <Menu
                   sx={{ mt: '45px' }}

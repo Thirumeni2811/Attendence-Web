@@ -15,7 +15,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Logo from "../assets/images/Logo.svg";
 import { useTheme } from '../components/Theme/ThemeContext';
 
-const Sidebar = ({ selected, setSelected, selectedChildId, setSelectedChildId }) => {
+const Sidebar = ({ selected, setSelected, selectedChildId, setSelectedChildId, data }) => {
   const [openAccordionId, setOpenAccordionId] = useState(null);
 
   const handleSelect = (text) => {
@@ -46,6 +46,7 @@ const Sidebar = ({ selected, setSelected, selectedChildId, setSelectedChildId })
       <div className='h-svh text-3xl flex flex-col gap-4 items-center px-3'>
         <div className='p-4'>
           <img src={Logo} alt="Logo" />
+          {/* <img src={data?.logo || Logo} alt={data?.name || Logo} className='h-20 w-80'/> */}
         </div>
         <List className='flex flex-col justify-center gap-2 xs:gap-0 w-full'>
           {menuItems.map(({ text, icon, link, hasChildren }) => (
