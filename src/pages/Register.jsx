@@ -6,17 +6,19 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button1 from "../components/form/Button/Button1"
 import Error from "../components/form/Button/Error";
-import { LOGIN, LOGIN_CONFIG, REFRESH_TOKEN } from "../services";
+import { REGISTER, LOGIN_CONFIG, REFRESH_TOKEN } from "../services";
 
-const Login = () => {
+const Register = () => {
 
     const [formData, setFormData] = useState({
-        email: 'abc@gmail.com',
-        password: 'abc@123456',
+        email: '',
+        password: '',
+        confirmPassword: '',
     });
     const [errors, setErrors] = useState({
         email: '',
         password: '',
+        confirmPassword: '',
     });
 
     const [loading, setLoading] = useState(false)
@@ -48,7 +50,7 @@ const Login = () => {
         // Reset all errors before validation
         Object.keys(newErrors).forEach(key => (newErrors[key] = ''));
 
-        //regular expression for email validation
+        // Regular expression for email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!formData.email) {
@@ -58,9 +60,22 @@ const Login = () => {
             newErrors.email = 'Invalid email format';
             isValid = false;
         }
+
         if (!formData.password) {
             newErrors.password = 'Password is required';
             isValid = false;
+        }
+
+        if (!formData.confirmPassword) {
+            newErrors.confirmPassword = 'Confirm Password is required';
+            isValid = false;
+        }
+
+        if (formData.password && formData.confirmPassword && formData.password !== formData.confirmPassword) {
+            setGeneralError('Passwords do not match');
+            isValid = false;
+        } else {
+            setGeneralError('');
         }
 
         setErrors(newErrors);
@@ -100,17 +115,22 @@ const Login = () => {
         }
     };
 
-    // Login function
-    const login = async (e) => {
+    // Register function
+    const register = async (e) => {
         e.preventDefault();
         setLoading(true)
         try {
             if (validateForm()) {
-                // console.log(formData)
-                const response = await axios.post(LOGIN, formData, LOGIN_CONFIG)
-                // console.log(response)
+                const Data = {
+                    email: formData.email,
+                    password: formData.password,
+                    role: 'admin',
+                }
+                console.log(Data)
+                const response = await axios.post(REGISTER, Data, LOGIN_CONFIG)
+                console.log(response)
 
-                if (response.status === 200) {
+                if (response.status === 201) {
                     const accessToken = response.data.tokens.access.token;
                     const refreshToken = response.data.tokens.refresh.token;
                     const accessTokenExpires = response.data.tokens.access.expires;
@@ -122,7 +142,7 @@ const Login = () => {
                     sessionStorage.setItem('accessTokenExpires', accessTokenExpires);
                     sessionStorage.setItem('refreshTokenExpires', refreshTokenExpires);
 
-                    // console.log('Login successful:', { accessToken, refreshToken, accessTokenExpires, refreshTokenExpires });
+                    // console.log('Register successful:', { accessToken, refreshToken, accessTokenExpires, refreshTokenExpires });
 
                     const access = new Date(sessionStorage.getItem('accessTokenExpires'));
                     // console.log(access);
@@ -130,27 +150,28 @@ const Login = () => {
                     const currentTime = new Date();
                     // console.log(currentTime);
 
-
                     // Check if access token is expired
                     if (accessTokenExpires <= currentTime) {
                         // Refresh tokens if expired
                         await refreshTokens();
                     }
 
-                    navigate('/department');
+                    navigate('/create-organisation');
                 } else {
-                    setGeneralError('Login failed. Please check your credentials');
+                    setGeneralError('Register failed. Please check your credentials');
                 }
             }
         } catch (error) {
-            console.error("An error occurred during login:", error);
-            setGeneralError('Something went wrong. Please try again');
+            console.error("An error occurred during register:", error.response);
+            if (error.response?.data?.message?.toLowerCase().includes('email already taken')) {
+                setGeneralError('This email is already registered. Try logging in.');
+            } else {
+                setGeneralError('Something went wrong. Please try again.');
+            }
         } finally {
             setLoading(false)
         }
     };
-
-
 
     return (
         <>
@@ -165,12 +186,12 @@ const Login = () => {
                                     <h1 className="text-3xl text-primary font-extrabold">
                                         Welcome!
                                     </h1>
-                                    <p className=" font-light text-darkColorSec">Enter your Login details</p>
+                                    <p className=" font-light text-darkColorSec">Register Your Organization</p>
                                     <Error error={generalError} />
                                 </div>
                             </div>
 
-                            <form onSubmit={login} noValidate className="grid gap-4">
+                            <form onSubmit={register} noValidate className="grid gap-4">
                                 <Box
                                     className="flex flex-col gap-7 w-full my-4"
                                 >
@@ -196,14 +217,25 @@ const Login = () => {
                                             onChange={handleChange("password")}
                                             required
                                         />
-                                        <Link className="flex items-end justify-end mt-2">Forgot your password?</Link>
+                                    </div>
+                                    <div>
+                                        <Error error={errors.confirmPassword} />
+                                        <TextInput1
+                                            id="confirmPassword"
+                                            name="confirmPassword"
+                                            label="Confirm Password"
+                                            type="password"
+                                            value={formData.confirmPassword}
+                                            onChange={handleChange("confirmPassword")}
+                                            required
+                                        />
                                     </div>
                                 </Box>
 
                                 <div className="flex flex-col gap-4 items-center justify-center">
-                                    <Button1 name="Login" loading={loading} />
-                                    <div>Don't have an Account ? {" "}
-                                        <Link to="/register" className="font-semibold text-primary">Register</Link>
+                                    <Button1 name="Register" loading={loading} />
+                                    <div>Already have an Account ? {" "}
+                                        <Link to="/login" className="font-semibold text-primary">Login</Link>
                                     </div>
                                 </div>
                             </form>
@@ -216,4 +248,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

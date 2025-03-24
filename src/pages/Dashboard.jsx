@@ -93,7 +93,7 @@ function Dashboard(props) {
     sessionStorage.removeItem('refreshTokenExpires');
     sessionStorage.removeItem('selectedMenu');
     sessionStorage.removeItem('selectedChildMenu');
-    navigate('/');
+    navigate('/login');
   };
 
 

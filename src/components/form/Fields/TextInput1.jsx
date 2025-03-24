@@ -27,6 +27,7 @@ const CSSTextField = styled(TextField)(({ theme }) => ({
     color: "#3D3D3D",
     fontWeight: 500,
     fontFamily: 'Albert Sans',
+    resize: "vertical", 
   },
   "& input": {
     color: "#3D3D3D",
@@ -42,7 +43,8 @@ const TextInput1 = ({ id, label, value, onChange, type = "text", multiline = fal
       variant="outlined"
       type={type}
       multiline={multiline}
-      rows={rows}
+      minRows={multiline ? 1 : undefined} // Auto expands
+      maxRows={multiline ? 6 : undefined}
       className="w-full"
       value={value}
       onChange={onChange}

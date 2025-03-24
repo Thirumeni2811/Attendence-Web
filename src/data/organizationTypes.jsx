@@ -1,0 +1,32 @@
+const organizationTypes = [
+    "School",
+    "College",
+    "University",
+    "IT Company",
+    "Startup",
+    "Non-Governmental Organization (NGO)",
+    "Government Organization",
+    "Corporate",
+    "Hospital",
+    "Manufacturing Company",
+    "Finance & Banking",
+    "Retail Business",
+    "Media & Entertainment",
+    "Logistics & Transportation",
+    "Consulting Firm",
+    "Real Estate",
+    "Construction & Infrastructure",
+    "Hospitality & Tourism",
+    "Energy & Utilities",
+    "Pharmaceutical & Healthcare",
+    "Agriculture & Farming",
+    "Educational Institution",
+    "Research & Development",
+    "Telecommunications",
+    "Automobile Industry",
+    "E-commerce",
+    "Defense & Aerospace",
+    "Other"
+];
+
+export default organizationTypes;

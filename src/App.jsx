@@ -5,6 +5,8 @@ import Loaders from './components/Loader/Loaders';
 
 //Lazy loading components
 const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+const Create = lazy(() => import('./pages/Create'));
 const Homepage = lazy(() => import('./pages/Homepage'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Department = lazy(() => import('./pages/Department'));
@@ -32,6 +34,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/create-organisation" element={<Create />} />
+
             {/* Parent Route */}
             <Route path="/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
               <Route path="department" element={<Department />} />

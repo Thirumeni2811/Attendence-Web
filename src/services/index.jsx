@@ -17,12 +17,14 @@ export const LOGIN_CONFIG = {
     },
 };
 
-//Login
+//Login and register
 export const LOGIN = `${BASE_URL}/auth/login`
-export const REFRESH_Token = `${BASE_URL}/auth/refresh-tokens`
+export const REGISTER = `${BASE_URL}/auth/register`
+export const REFRESH_TOKEN = `${BASE_URL}/auth/refresh-tokens`
 
 //Organisation
 export const GET_ORGANISATION = `${BASE_URL}/organisation`
+export const CREATE_ORGANISATION = `${BASE_URL}/organisation`
 
 //Department
 export const GET_DEPARTMENT = `${BASE_URL}/department`
