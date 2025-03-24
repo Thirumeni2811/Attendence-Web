@@ -98,7 +98,7 @@ const ScheduleTable = ({ schedules, handleEdit, handleModal }) => {
                             ))
                         ) : (
                             <TableRow>
-                                <StyledTableCell colSpan={4}>No Schedule available</StyledTableCell>
+                                <StyledTableCell colSpan={7}>No Schedule available</StyledTableCell>
                             </TableRow>
                         )}
                     </TableBody>

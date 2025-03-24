@@ -34,7 +34,7 @@ function Dashboard(props) {
   const [selected, setSelected] = useState("Department")
   const [selectedChildId, setSelectedChildId] = useState('');
   const [data, setData] = useState({});
-  console.log(data)
+  // console.log(data)
 
   const [sidebarToggle, setSidebarToggle] = useState(true); // Initially true (Sidebar is visible)
 

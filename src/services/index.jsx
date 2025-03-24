@@ -53,3 +53,6 @@ export const GET_HOLIDAY = `${BASE_URL}/holiday`
 export const CREATE_HOLIDAY = `${BASE_URL}/holiday`
 export const UPDATE_HOLIDAY = (holidayId) => `${BASE_URL}/holiday/${holidayId}`
 export const DELETE_HOLIDAY = (holidayId) => `${BASE_URL}/holiday/${holidayId}`
+
+//Leave
+export const GET_LEAVE = `${BASE_URL}/leave/getAll`
