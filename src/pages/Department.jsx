@@ -172,7 +172,7 @@ const Department = () => {
         <>
             <section className='wholeContainer'>
 
-                <form noValidate className='form-container' onSubmit={addDepartment}>
+                <form noValidate className='form-container ' onSubmit={addDepartment}>
 
                     <Box
                         className='box-container2'

@@ -1,5 +1,5 @@
-const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
-// const BASE_URL = "http://localhost:3006/v1"
+// const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
+const BASE_URL = "http://localhost:3006/v1"
 
 //Default config
 const token = sessionStorage.getItem('token');
@@ -24,7 +24,9 @@ export const REFRESH_TOKEN = `${BASE_URL}/auth/refresh-tokens`
 
 //Organisation
 export const GET_ORGANISATION = `${BASE_URL}/organisation`
+export const GET_ORGANISATION_BY_TOKEN = `${BASE_URL}/organisation`
 export const CREATE_ORGANISATION = `${BASE_URL}/organisation`
+export const UPDATE_ORGANISATION = (id) => `${BASE_URL}/organisation/${id}`
 
 //Batch
 export const GET_BATCH = `${BASE_URL}/organisation/batch`

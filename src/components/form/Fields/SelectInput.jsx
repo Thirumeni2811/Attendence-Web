@@ -30,7 +30,7 @@ const StyledAutocomplete = styled(Autocomplete)(({ theme, mode }) => ({
     cursor: "pointer",
   },
   "& input": {
-    color: mode === "dark" ? "#ffffff" : "#3D3D3D", 
+    color: mode === "dark" ? "#808080" : "#3D3D3D", 
     fontWeight: 500,
     fontFamily: "Albert Sans",
   },

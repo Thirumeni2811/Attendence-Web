@@ -16,6 +16,7 @@ const Schedule = lazy(() => import('./pages/Schedule'));
 const Holiday = lazy(() => import('./pages/Holiday'));
 const Breaks = lazy(() => import('./pages/Breaks'));
 const Leave = lazy(() => import('./pages/Leave'));
+const Profile = lazy(() => import('./pages/Profile'));
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -47,6 +48,7 @@ function App() {
               <Route path="schedule-breaks/:id" element={<Breaks />} />
               <Route path="holiday" element={<Holiday />} />
               <Route path="leave" element={<Leave />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Routes>
         </Suspense>
