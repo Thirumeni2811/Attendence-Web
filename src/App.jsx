@@ -7,6 +7,7 @@ import Loaders from './components/Loader/Loaders';
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const Create = lazy(() => import('./pages/Create'));
+const Batch = lazy(() => import('./pages/Batch'));
 const Homepage = lazy(() => import('./pages/Homepage'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Department = lazy(() => import('./pages/Department'));
@@ -36,6 +37,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/create-organisation" element={<Create />} />
+            <Route path="/create-batch" element={<Batch />} />
 
             {/* Parent Route */}
             <Route path="/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>

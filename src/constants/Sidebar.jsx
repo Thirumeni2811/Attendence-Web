@@ -6,6 +6,7 @@ import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import BeachAccessRoundedIcon from '@mui/icons-material/BeachAccessRounded';
 import EventIcon from '@mui/icons-material/Event';
+import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import MedicalInformationOutlinedIcon from '@mui/icons-material/MedicalInformationOutlined';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
@@ -36,6 +37,7 @@ const Sidebar = ({ selected, setSelected, selectedChildId, setSelectedChildId, d
     { text: 'Schedule Management', icon: <EventNoteRoundedIcon />, link: '/schedule' },
     { text: 'Holiday Management', icon: <BeachAccessRoundedIcon />, link: '/holiday' },
     { text: 'Leave Management', icon: <EventIcon />, link: '/leave' },
+    { text: 'Profile Settings', icon: <SettingsIcon />, link: '/leave' },
     // { text: 'Task Management', icon: <AssignmentOutlinedIcon />, link: '#', hasChildren: true },
     // { text: 'Doctor Management', icon: <BadgeOutlinedIcon />, link: '#', hasChildren: true },
     // { text: 'Dental Chair Management', icon: <ManageAccountsOutlinedIcon />, link: '#', hasChildren: true }

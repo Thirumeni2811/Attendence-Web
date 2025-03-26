@@ -10,6 +10,7 @@ import { CONFIG, CREATE_ORGANISATION } from "../services";
 import SelectInput1 from "../components/form/Fields/SelectInput1";
 import organizationTypes from "../data/organizationTypes"
 import ImageSelector from "../components/Uploader.jsx/ImageSelector";
+import Batch from "./Batch";
 
 const Create = () => {
 
@@ -28,8 +29,12 @@ const Create = () => {
 
     const [loading, setLoading] = useState(false)
 
-    const [generalError, setGeneralError] = useState('')
     const navigate = useNavigate();
+
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleCloseModal = () => setOpenModal(false);
+
 
     // Handle form field change
     const handleChange = (fieldName) => (e) => {
@@ -66,7 +71,7 @@ const Create = () => {
         setFormData((prev) => ({
             ...prev,
             // logo: file ? file.name : "No file chosen"
-            logo: file 
+            logo: file
         }));
     };
 
@@ -108,10 +113,15 @@ const Create = () => {
         setLoading(true)
         try {
             if (validateForm()) {
-                console.log(formData)
-                const response = await axios.post(CREATE_ORGANISATION, formData, CONFIG)
+                const token = sessionStorage.getItem('token');
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                };
+                const response = await axios.post(CREATE_ORGANISATION, formData, config)
                 console.log(response)
-                navigate("/department")
+                setOpenModal(true)
             }
         } catch (error) {
             console.error("An error occurred during create the organization:", error.response);
@@ -134,7 +144,6 @@ const Create = () => {
                                         Welcome!
                                     </h1>
                                     <p className=" font-light text-darkColorSec">Create Your Organization Profile</p>
-                                    <Error error={generalError} />
                                 </div>
                             </div>
 
@@ -192,6 +201,12 @@ const Create = () => {
                     </div>
                 </div>
             </section>
+
+            {
+                openModal && (
+                    <Batch openModal={openModal} handleCloseModal={handleCloseModal} />
+                )
+            }
         </>
     );
 };

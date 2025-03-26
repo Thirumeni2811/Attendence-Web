@@ -6,7 +6,7 @@ const token = sessionStorage.getItem('token');
 export const CONFIG = {
     headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
     },
 };
 
@@ -25,6 +25,10 @@ export const REFRESH_TOKEN = `${BASE_URL}/auth/refresh-tokens`
 //Organisation
 export const GET_ORGANISATION = `${BASE_URL}/organisation`
 export const CREATE_ORGANISATION = `${BASE_URL}/organisation`
+
+//Batch
+export const GET_BATCH = `${BASE_URL}/organisation/batch`
+export const CREATE_BATCH = `${BASE_URL}/organisation/batch`
 
 //Department
 export const GET_DEPARTMENT = `${BASE_URL}/department`
