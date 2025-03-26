@@ -2,12 +2,13 @@
 const BASE_URL = "http://localhost:3006/v1"
 
 //Default config
-const token = sessionStorage.getItem('token');
-export const CONFIG = {
-    headers: {
-        Authorization: `Bearer ${token}`,
-        // "Content-Type": "application/json",
-    },
+export const getConfig = () => {
+    const token = sessionStorage.getItem("token");
+    return {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
 };
 
 //Login config

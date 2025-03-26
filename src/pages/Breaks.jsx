@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CONFIG, CREATE_BREAK, DELETE_BREAK, GET_SCHEDULE_BY_ID, UPDATE_BREAK } from '../services';
+import { getConfig, CREATE_BREAK, DELETE_BREAK, GET_SCHEDULE_BY_ID, UPDATE_BREAK } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import BreakTable from '../components/Table/BreakTable';
 import Button from '../components/form/Button/Button';
@@ -127,7 +127,7 @@ const Breaks = () => {
     const getSchedule = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(GET_SCHEDULE_BY_ID(id), CONFIG);
+            const response = await axios.get(GET_SCHEDULE_BY_ID(id), getConfig());
             setData(response?.data?.data || [])
             setScheduleId(response?.data?.data.id || null)
             setBreaks(response?.data?.data?.breaks || {})
@@ -152,12 +152,12 @@ const Breaks = () => {
             try {
                 if (isEditing) {
                     // console.log(breakId)
-                    const response = await axios.patch(UPDATE_BREAK(scheduleId, breakId), formData, CONFIG);
+                    const response = await axios.patch(UPDATE_BREAK(scheduleId, breakId), formData, getConfig());
                     // console.log('Breaks updated successfully:', response?.data);
                     setIsEditing(false);
                     setBreakId(null);
                 } else {
-                    const response = await axios.post(CREATE_BREAK(scheduleId), formData, CONFIG);
+                    const response = await axios.post(CREATE_BREAK(scheduleId), formData, getConfig());
                     console.log('Breaks added successfully:', response?.data);
                 }
                 await getSchedule();
@@ -198,7 +198,7 @@ const Breaks = () => {
     const handleDelete = async (breakId) => {
         setLoading(true);
         try {
-            const response = await axios.delete(DELETE_BREAK(scheduleId, breakId), CONFIG);
+            const response = await axios.delete(DELETE_BREAK(scheduleId, breakId), getConfig());
             // console.log(`Deleted : ${scheduleId}: `, response);
             const updatedData = breaks.filter(data => data._id !== breakId);
             setBreaks(updatedData);

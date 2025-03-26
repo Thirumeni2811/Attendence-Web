@@ -7,7 +7,7 @@ import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import Button2 from '../components/form/Button/Button2';
 import Error from '../components/form/Button/Error';
 import axios from 'axios';
-import { CONFIG, CREATE_BATCH } from '../services';
+import { getConfig, CREATE_BATCH } from '../services';
 
 const Batch = ({ openModal, handleCloseModal }) => {
     const [batches, setBatches] = useState([""]);
@@ -47,7 +47,7 @@ const Batch = ({ openModal, handleCloseModal }) => {
             const data = {
                 batch: batches
             }
-            const response = await axios.patch(CREATE_BATCH, data, CONFIG);
+            const response = await axios.patch(CREATE_BATCH, data, getConfig());
             console.log(response);
             navigate('/department');
         } catch (error) {

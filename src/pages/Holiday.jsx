@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import ModalView from '../components/Modal/ModalView';
 import axios from 'axios';
 import Button from '../components/form/Button/Button';
-import { CONFIG, CREATE_HOLIDAY, DELETE_HOLIDAY, GET_HOLIDAY, UPDATE_HOLIDAY } from '../services';
+import { getConfig, CREATE_HOLIDAY, DELETE_HOLIDAY, GET_HOLIDAY, UPDATE_HOLIDAY } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import HolidayTable from '../components/Table/HolidayTable'
 import Error from '../components/form/Button/Error'
@@ -96,7 +96,7 @@ const Holiday = () => {
     const fetchHolidays = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(GET_HOLIDAY, CONFIG);
+            const response = await axios.get(GET_HOLIDAY, getConfig());
             // console.log('Fetch response:', response.data);
             setHolidays(response?.data?.data || []);
             setPage(0);
@@ -126,12 +126,12 @@ const Holiday = () => {
             try {
                 if (isEditing) {
                     // console.log(holidayId)
-                    const response = await axios.patch(UPDATE_HOLIDAY(holidayId), formData, CONFIG);
+                    const response = await axios.patch(UPDATE_HOLIDAY(holidayId), formData, getConfig());
                     // console.log('Holidays updated successfully:', response?.data);
                     setIsEditing(false);
                     setHolidayId(null);
                 } else {
-                    const response = await axios.post(CREATE_HOLIDAY, formData, CONFIG);
+                    const response = await axios.post(CREATE_HOLIDAY, formData, getConfig());
                     // console.log('Holidays added successfully:', response?.data);
                 }
                 await fetchHolidays();
@@ -169,7 +169,7 @@ const Holiday = () => {
     const handleDelete = async (holidayId) => {
         setLoading(true);
         try {
-            const response = await axios.delete(DELETE_HOLIDAY(holidayId), CONFIG);
+            const response = await axios.delete(DELETE_HOLIDAY(holidayId), getConfig());
             // console.log(`Deleted : ${holidayId}: `, response);
             const updatedHolidays = holidays.filter(holiday => holiday.id !== holidayId);
             setHolidays(updatedHolidays);

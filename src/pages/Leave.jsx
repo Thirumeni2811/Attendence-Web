@@ -5,7 +5,7 @@ import Edit from "../components/form/Button/Edit";
 import { useTheme } from "../components/Theme/ThemeContext";
 import { formatDate } from "../utils/DateTime";
 import StyledTableHead from "../components/form/Fields/StyledTableHead";
-import { CONFIG, GET_LEAVE } from "../services";
+import { getConfig, GET_LEAVE } from "../services";
 import axios from "axios";
 import Loaders from "../components/Loader/Loaders";
 
@@ -37,7 +37,7 @@ const LeaveTable = () => {
     const fetchLeaves = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(GET_LEAVE, CONFIG);
+            const response = await axios.get(GET_LEAVE, getConfig());
             // console.log('Fetch response:', response.data);
             setLeaves(response?.data?.data || []);
             setPage(0);

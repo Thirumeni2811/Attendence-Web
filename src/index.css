@@ -22,6 +22,7 @@
     --color-borderDark: #8888883B;
     --color-textDark: #808080;
     --color-bgColorLight: #F5F5F5;
+    --color-bgColorLightSec: #FAFAFA;
 }
 
 .scrollbar::-webkit-scrollbar {

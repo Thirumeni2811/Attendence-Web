@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import ModalView from '../components/Modal/ModalView';
 import axios from 'axios';
 import Button from '../components/form/Button/Button';
-import { CONFIG, CREATE_DEPARTMENT, DELETE_DEPARTMENT, GET_DEPARTMENT, UPDATE_DEPARTMENT } from '../services';
+import { getConfig, CREATE_DEPARTMENT, DELETE_DEPARTMENT, GET_DEPARTMENT, UPDATE_DEPARTMENT } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import DepartmentTable from '../components/Table/DepartmentTable'
 import Error from '../components/form/Button/Error'
@@ -77,7 +77,7 @@ const Department = () => {
     const fetchDepartments = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(GET_DEPARTMENT, CONFIG);
+            const response = await axios.get(GET_DEPARTMENT, getConfig());
             // console.log('Fetch response:', response.data);
             setDepartments(response?.data?.data || []);
             setPage(0);
@@ -107,12 +107,12 @@ const Department = () => {
             try {
                 if (isEditing) {
                     // console.log(departmentId)
-                    const response = await axios.patch(UPDATE_DEPARTMENT(departmentId), formData, CONFIG);
+                    const response = await axios.patch(UPDATE_DEPARTMENT(departmentId), formData, getConfig());
                     // console.log('Departments updated successfully:', response?.data);
                     setIsEditing(false);
                     setDepartmentId(null);
                 } else {
-                    const response = await axios.post(CREATE_DEPARTMENT, formData, CONFIG);
+                    const response = await axios.post(CREATE_DEPARTMENT, formData, getConfig());
                     // console.log('Departments added successfully:', response?.data);
                 }
                 await fetchDepartments();
@@ -150,7 +150,7 @@ const Department = () => {
     const handleDelete = async (departmentId) => {
         setLoading(true);
         try {
-            const response = await axios.delete(DELETE_DEPARTMENT(departmentId), CONFIG);
+            const response = await axios.delete(DELETE_DEPARTMENT(departmentId), getConfig());
             // console.log(`Deleted : ${departmentId}: `, response);
             const updatedDepartments = departments.filter(department => department.id !== departmentId);
             setDepartments(updatedDepartments);

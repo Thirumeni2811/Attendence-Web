@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import StyledTimeField from '../components/form/Fields/StyledTimeField';
 import Button from '../components/form/Button/Button';
 import axios from 'axios';
-import { CONFIG, CREATE_SCHEDULE, DELETE_SCHEDULE, GET_SCHEDULE, UPDATE_SCHEDULE } from '../services';
+import { getConfig, CREATE_SCHEDULE, DELETE_SCHEDULE, GET_SCHEDULE, UPDATE_SCHEDULE } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import ScheduleTable from '../components/Table/ScheduleTable';
 import ModalView from '../components/Modal/ModalView';
@@ -122,7 +122,7 @@ const Schedule = () => {
   const getSchedules = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(GET_SCHEDULE, CONFIG);
+      const response = await axios.get(GET_SCHEDULE, getConfig());
       setSchedules(response?.data?.data || [])
       setPage(0);
     } catch (error) {
@@ -158,12 +158,12 @@ const Schedule = () => {
         // console.log(payload)
         if (isEditing) {
           // console.log(scheduleId)
-          const response = await axios.patch(UPDATE_SCHEDULE(scheduleId), payload, CONFIG);
+          const response = await axios.patch(UPDATE_SCHEDULE(scheduleId), payload, getConfig());
           // console.log('Schedule updated successfully:', response?.data);
           setIsEditing(false);
           setScheduleId(null);
         } else {
-          const response = await axios.post(CREATE_SCHEDULE, payload, CONFIG);
+          const response = await axios.post(CREATE_SCHEDULE, payload, getConfig());
           // console.log('Schedule added successfully:', response?.data);
         }
         await getSchedules();
@@ -209,7 +209,7 @@ const Schedule = () => {
   const handleDelete = async (scheduleId) => {
     setLoading(true);
     try {
-      const response = await axios.delete(DELETE_SCHEDULE(scheduleId), CONFIG);
+      const response = await axios.delete(DELETE_SCHEDULE(scheduleId), getConfig());
       // console.log(`Deleted : ${scheduleId}: `, response);
       const updatedSchedules = schedules.filter(schedule => schedule.id !== scheduleId);
       setSchedules(updatedSchedules);

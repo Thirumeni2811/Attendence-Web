@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Button from '../components/form/Button/Button'
 import Image from '../components/Uploader.jsx/Image'
 import axios from 'axios'
-import { CONFIG, GET_ORGANISATION_BY_TOKEN, UPDATE_ORGANISATION } from '../services'
+import { getConfig, GET_ORGANISATION_BY_TOKEN, UPDATE_ORGANISATION } from '../services'
 import Error from '../components/form/Button/Error'
 import TextInput from '../components/form/Fields/TextInput'
 import organizationTypes from '../data/organizationTypes'
 import SelectInput from '../components/form/Fields/SelectInput'
 import Button3 from '../components/form/Button/Button3'
+import OrgDetails from './OrgDetails'
 
 const Profile = () => {
 
@@ -128,7 +129,7 @@ const Profile = () => {
   //get oragnization
   const getOrganization = async () => {
     try {
-      const response = await axios.get(GET_ORGANISATION_BY_TOKEN, CONFIG);
+      const response = await axios.get(GET_ORGANISATION_BY_TOKEN, getConfig());
       const res = response?.data?.data;
       setData(res || {})
     } catch (error) {
@@ -147,7 +148,7 @@ const Profile = () => {
     if (validateForm()) {
       setLoading(true);
       try {
-        const response = await axios.patch(UPDATE_ORGANISATION((data.id)), formData, CONFIG);
+        const response = await axios.patch(UPDATE_ORGANISATION((data.id)), formData, getConfig());
         console.log(response);
       } catch (error) {
         console.error('Error in saving profil data:', error.response ? error.response.data : error.message);
@@ -220,9 +221,10 @@ const Profile = () => {
 
           </Box>
           <div className='buttonField'>
-          <Button3 name="Update" loading={loading} />
+            <Button3 name="Update" loading={loading} />
           </div>
         </form>
+        <OrgDetails data={data} />
       </section>
     </>
   )

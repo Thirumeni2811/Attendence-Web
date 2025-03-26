@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import ModalView from '../components/Modal/ModalView';
 import axios from 'axios';
 import Button from '../components/form/Button/Button';
-import { CONFIG, CREATE_DESIGNATION, DELETE_DESIGNATION, GET_DESIGNATION, UPDATE_DESIGNATION } from '../services';
+import { getConfig, CREATE_DESIGNATION, DELETE_DESIGNATION, GET_DESIGNATION, UPDATE_DESIGNATION } from '../services';
 import Loaders from '../components/Loader/Loaders';
 import DesignationTable from '../components/Table/DesignationTable';
 import Error from '../components/form/Button/Error'
@@ -77,7 +77,7 @@ const Designation = () => {
     const fetchDesignations = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(GET_DESIGNATION, CONFIG);
+            const response = await axios.get(GET_DESIGNATION, getConfig());
             // console.log('Fetch response:', response.data);
             setDesignations(response?.data?.data || []);
             setPage(0);
@@ -107,12 +107,12 @@ const Designation = () => {
             try {
                 if (isEditing) {
                     // console.log(designationId)
-                    const response = await axios.patch(UPDATE_DESIGNATION(designationId), formData, CONFIG);
+                    const response = await axios.patch(UPDATE_DESIGNATION(designationId), formData, getConfig());
                     // console.log('Designations updated successfully:', response?.data);
                     setIsEditing(false);
                     setDesignationId(null);
                 } else {
-                    const response = await axios.post(CREATE_DESIGNATION, formData, CONFIG);
+                    const response = await axios.post(CREATE_DESIGNATION, formData, getConfig());
                     // console.log('Designations added successfully:', response?.data);
                 }
                 await fetchDesignations();
@@ -149,7 +149,7 @@ const Designation = () => {
     const handleDelete = async (designationId) => {
         setLoading(true);
         try {
-            const response = await axios.delete(DELETE_DESIGNATION(designationId), CONFIG);
+            const response = await axios.delete(DELETE_DESIGNATION(designationId), getConfig());
             // console.log(`Deleted : ${designationId}: `, response);
             const updatedDesignations = designations.filter(designation => designation.id !== designationId);
             setDesignations(updatedDesignations);

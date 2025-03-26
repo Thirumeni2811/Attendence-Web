@@ -3,6 +3,9 @@ import "dayjs/locale/en-gb";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
+dayjs.extend(utc); // Extend UTC plugin
+dayjs.extend(timezone); // Extend Timezone plugin
+
 //format time
 export const formatTimeToUTC = (time) => {
     return dayjs.utc(time).toISOString(); // Converts to UTC and formats as ISO 8601

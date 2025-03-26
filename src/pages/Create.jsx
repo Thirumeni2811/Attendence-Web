@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button1 from "../components/form/Button/Button1"
 import Error from "../components/form/Button/Error";
-import { CONFIG, CREATE_ORGANISATION } from "../services";
+import { CREATE_ORGANISATION, getConfig } from "../services";
 import SelectInput1 from "../components/form/Fields/SelectInput1";
 import organizationTypes from "../data/organizationTypes"
 import ImageSelector from "../components/Uploader.jsx/ImageSelector";
@@ -113,13 +113,13 @@ const Create = () => {
         setLoading(true)
         try {
             if (validateForm()) {
-                const token = sessionStorage.getItem('token');
-                const config = {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                };
-                const response = await axios.post(CREATE_ORGANISATION, formData, config)
+                // const token = sessionStorage.getItem('token');
+                // const config = {
+                //     headers: {
+                //         Authorization: `Bearer ${token}`,
+                //     },
+                // };
+                const response = await axios.post(CREATE_ORGANISATION, formData, getConfig())
                 console.log(response)
                 setOpenModal(true)
             }

@@ -12,7 +12,7 @@ import Mode from '../components/Theme/Mode'
 import Sidebar from '../constants/Sidebar';
 import { useTheme } from '../components/Theme/ThemeContext';
 import axios from 'axios';
-import { CONFIG, GET_ORGANISATION } from '../services';
+import { getConfig, GET_ORGANISATION } from '../services';
 
 const theme = createTheme({
   breakpoints: {
@@ -107,7 +107,7 @@ function Dashboard(props) {
 
   const getData = async () => {
     try {
-      const response = await axios.get(GET_ORGANISATION, CONFIG);
+      const response = await axios.get(GET_ORGANISATION, getConfig());
       const data = response?.data?.data
       setData(data || {})
     } catch (error) {
