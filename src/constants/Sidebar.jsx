@@ -49,8 +49,9 @@ const Sidebar = ({ selected, setSelected, selectedChildId, setSelectedChildId, d
     <section className='bg-bgColorLight dark:bg-darkColor'>
       <div className='h-svh text-3xl flex flex-col gap-4 items-center px-3'>
         <div className='p-4'>
-          <img src={Logo} alt="Logo" />
+          {/* <img src={Logo} alt="Logo" /> */}
           {/* <img src={data?.logo || Logo} alt={data?.name || Logo} className='h-20 w-80'/> */}
+          <p className="dark:text-textDark font-extrabold text-4xl text-center">{data.name}</p>
         </div>
         <List className='flex flex-col justify-center gap-2 xs:gap-0 w-full'>
           {menuItems.map(({ text, icon, link, hasChildren }) => (

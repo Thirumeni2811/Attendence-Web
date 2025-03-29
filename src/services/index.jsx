@@ -1,5 +1,5 @@
-const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
-// const BASE_URL = "http://localhost:3006/v1"
+// const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
+const BASE_URL = "http://localhost:3006/v1"
 
 //Default config
 export const getConfig = () => {

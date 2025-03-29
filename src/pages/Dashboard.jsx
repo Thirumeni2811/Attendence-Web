@@ -164,13 +164,23 @@ function Dashboard(props) {
             </IconButton>
 
 
-            <div className={`p-2 ${sidebarToggle ? 'block' : 'hidden'}`}>
+            {/* <div className={`p-2 ${sidebarToggle ? 'block' : 'hidden'}`}>
               <img src={Logo} alt="Logo" className="lg:hidden" />
             </div>
 
             {!sidebarToggle && (
               <div className="p-2 absolute lg:relative">
                 <img src={Logo} alt="Logo" className="hidden lg:block lg:shrink-0" />
+              </div>
+            )} */}
+
+            <div className={`p-2 ${sidebarToggle ? 'block' : 'hidden'}`}>
+              <p className="lg:hidden font-extrabold text-xl dark:text-textDark">{data.name}</p>
+            </div>
+
+            {!sidebarToggle && (
+              <div className="p-2 absolute lg:relative">
+                <p className="hidden lg:block lg:shrink-0 font-extrabold text-xl dark:text-textDark">{data.name}</p>
               </div>
             )}
 
