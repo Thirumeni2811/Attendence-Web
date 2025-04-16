@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Button from '../components/form/Button/Button'
-import Image from '../components/Uploader.jsx/Image'
+import Image from '../components/Uploader/Image'
 import axios from 'axios'
 import { getConfig, GET_ORGANISATION_BY_TOKEN, UPDATE_ORGANISATION } from '../services'
 import Error from '../components/form/Button/Error'

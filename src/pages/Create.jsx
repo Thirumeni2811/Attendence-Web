@@ -9,7 +9,7 @@ import Error from "../components/form/Button/Error";
 import { CREATE_ORGANISATION, getConfig } from "../services";
 import SelectInput1 from "../components/form/Fields/SelectInput1";
 import organizationTypes from "../data/organizationTypes"
-import ImageSelector from "../components/Uploader.jsx/ImageSelector";
+import ImageSelector from "../components/Uploader/ImageSelector";
 import Batch from "./Batch";
 
 const Create = () => {
