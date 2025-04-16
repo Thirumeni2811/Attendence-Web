@@ -1,5 +1,5 @@
-// const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
-const BASE_URL = "http://localhost:3006/v1"
+const BASE_URL = "https://attendence-api-e4oc.onrender.com/v1"
+// const BASE_URL = "http://localhost:3006/v1"
 
 //Default config
 export const getConfig = () => {
@@ -65,3 +65,14 @@ export const DELETE_HOLIDAY = (holidayId) => `${BASE_URL}/holiday/${holidayId}`
 
 //Leave
 export const GET_LEAVE = `${BASE_URL}/leave/getAll`
+export const GET_LEAVE_BY_EMPID = (empId) => `${BASE_URL}/leave/${empId}`
+
+//User
+export const GET_EMPLOYEE = `${BASE_URL}/employee`
+export const CREATE_EMPLOYEE = `${BASE_URL}/employee`
+export const GET_EMPLOYEE_BY_ID = (empId) => `${BASE_URL}/employee/${empId}`
+export const UPDATE_EMPLOYEE = (empId) => `${BASE_URL}/employee/${empId}`
+export const DELETE_EMPLOYEE = (empId) => `${BASE_URL}/employee/${empId}`
+
+//Attendance
+export const GET_ATTENDANCE_BY_ID = (empId) => `${BASE_URL}/attendence/${empId}`

@@ -23,6 +23,7 @@
     --color-textDark: #808080;
     --color-bgColorLight: #F5F5F5;
     --color-bgColorLightSec: #FAFAFA;
+    --color-bgColorTer: #AFC0C2;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -61,6 +62,10 @@
     @apply grid gap-2 p-4 border-1 border-border rounded-lg bg-bgColorLight dark:bg-darkColor dark:border-borderDark;
 }
 
+.tableContainer1 {
+    @apply grid gap-2 p-4;
+}
+
 .tableContainerRow {
     @apply flex gap-4 m-2;
 }
@@ -79,4 +84,8 @@
 
 .modelName {
     @apply text-primary font-bold;
+}
+
+.user {
+    @apply bg-bgColorTer px-6 py-1 rounded-3xl font-bold;
 }

@@ -16,8 +16,14 @@ export const formatDate = (date) => {
     return dayjs(date).format("DD-MM-YYYY"); // Format date in dd-mm-yyyy
 };
 
-// format time for table
+// format time
 export const formatTimeToIST = (time) => {
     const utcTime = formatTimeToUTC(time); // Get UTC time
     return dayjs(utcTime).tz("Asia/Kolkata").format("hh:mm A"); // Convert to IST and format as hh:mm AM/PM
+};
+
+// Format both date and time to IST
+export const formatDateTimeToIST = (datetime) => {
+    const utcTime = formatTimeToUTC(datetime); // Convert to UTC
+    return dayjs(utcTime).tz("Asia/Kolkata").format("DD-MM-YYYY | hh:mm A"); // Convert to IST and format as date + time
 };
